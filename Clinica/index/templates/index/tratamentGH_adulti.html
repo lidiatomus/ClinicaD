@@ -1,0 +1,506 @@
+{% extends 'index/navbar.html'%}
+{% load static %}
+{% load custom_filters %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+{%block content%}
+
+<head>
+
+    <title>Prader-Wili</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="apple-touch-icon" type="image/png"
+        href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png">
+    <link rel="shortcut icon" type="image/x-icon"
+        href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
+    <link rel="mask-icon" type="image/x-icon"
+        href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg"
+        color="#111">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="stylesheet" href="{% static 'index/style.css' %}">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!--Bootstrap CSS-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+        integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+        integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+        crossorigin="anonymous" />
+        <title>Algoritm testare genetica</title>
+        <style>
+            .card-container {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(236, 236, 236, 0.67);
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 20px auto; /* Center the card and provide space around it */
+    max-width: 90%; /* Ensure it fits within the parent container */
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.card-container h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.card-container h2 {
+    font-size: 1.5rem;
+    margin-top: 20px;
+}
+
+.card-container ul,
+.card-container ol {
+    padding-left: 20px;
+}
+
+.card-container li {
+    margin-bottom: 10px;
+}
+
+.card-container strong {
+    font-size: 1.2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .card-container {
+        padding: 15px;
+        margin: 15px auto; /* Ensure margins are consistent */
+    }
+
+    .card-container h1 {
+        font-size: 1.5rem;
+    }
+
+    .card-container h2 {
+        font-size: 1.2rem;
+    }
+
+    .card-container strong {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-container {
+        padding: 10px;
+        margin: 10px auto; /* Maintain consistent margins */
+    }
+
+    .card-container h1 {
+        font-size: 1.2rem;
+    }
+
+    .card-container h2 {
+        font-size: 1rem;
+    }
+
+    .card-container strong {
+        font-size: 0.9rem;
+    }
+}
+
+        </style>
+
+
+
+</head>
+
+
+<body>
+
+    <!-- Script section -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        AOS.init();
+    </script>
+    <script src="{% static 'index/scripts.js' %}"></script>
+    <!--Bootsrap scripts-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+        integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+        crossorigin="anonymous"></script>
+
+    <div class="photo-section" id="home">
+        <img class="photo_art" src="{% static 'index/Resources/health.jpg' %}" alt="Descriptive Alt Text">
+        <div class="photo-overlay">
+            <p>Tratament GH al pacientilor adulti</p>
+            <p> {% with path=request.get_full_path|split:"/" %}
+                {{ path.2 }} <!-- pt partea a 2-a din link gen ghiduri patoligii etc -->
+                <!-- {{ path.1 }} asta e pt prima parte din link gen prader-wili obezitati rare etc -->
+                {% endwith %}
+            </p>
+        </div>
+    </div>
+
+
+
+
+    <!-- INCEPUT SITE-->
+
+    <style>
+        .genetic-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
+    
+        .genetic-table th, .genetic-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+            vertical-align: middle;
+        }
+    
+        .genetic-table th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+    
+        .genetic-table td {
+            background-color: #fff;
+        }
+    
+        .genetic-table tr:nth-child(even) td {
+            background-color: #f9f9f9;
+        }
+    
+        .genetic-table .note {
+            text-align: left;
+            font-style: italic;
+            color: #555;
+        }
+    
+        .highlight {
+            background-color: #d1e7dd;
+            font-weight: bold;
+        }
+    
+        .card-container {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: rgba(236, 236, 236, 0.67);
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px auto;
+            max-width: 90%;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+    
+        .card-container h1 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+    
+        .card-container h2 {
+            font-size: 1.5rem;
+            margin-top: 20px;
+        }
+    
+        .card-container ul,
+        .card-container ol {
+            padding-left: 20px;
+        }
+    
+        .card-container li {
+            margin-bottom: 10px;
+        }
+    
+        .card-container strong {
+            font-size: 1.2rem;
+        }
+    </style>
+    
+    <div class="card-container">
+        <p><strong>1. Particularități ale tratamentului cu GH la vârsta de adult</strong></p>
+        <ul>
+            <li>• Deficitul de hormon de creștere la adult (DGHA) este o entitate clinică bine conturată, important de diagnosticat datorită consecințelor sale</li>
+            <li>• DGHA se poate asocia cu reducerea calității vieții, în special prin reducerea forței musculare și a capacității de efort, alterarea compoziției corporale (reducerea masei musculare și creșterea țesutului adipos), osteopenie/osteoporoza</li>
+            <li>• DGHA este de asemenea asociat cu insulinorezistența și alterarea factorilor de risc cardiovascular. Pe termen lung, este cunoscut faptul că pacienții cu hipopituitarism și deficit de GH au o prevalență crescută a bolilor cardiovasculare (Toogood A 2004) și a diabetului zaharat (Abs R 1999). În prezent, există studii care au arătat că tratamentul cu hormon de creștere ameliorează insulinorezistența, factorii de risc cardiovascular și calitatea vieții.</li>
+            <li>• Pacienții cu hipopituitarism și DGHA care primesc doar tratament convențional, fără tratament cu hormon de creștere, au o mortalitate crescută (Rosen T 1990, Tomlinson JW 2001, Bates AS 1996). Svensson a arătat într-un studiu prospectiv că tratamentul cu GH timp de 3 ani s-a asociat cu o reducere a mortalității la rate similare cu populația generală (Svensson J 2004).</li>
+            <li>• La nivel internațional, există protocol de tratament al deficitului de GH la adulți, elaborat în aprilie 1997 de GH Research Society (GRS), care a convenit pentru organizarea unui workshop internațional, care a formulat Ghidurile de Consens pentru Diagnosticul și Tratamentul Adulților cu DGHA, ghiduri care au fost aprobate la nivel internațional de către autoritățile de sănătate și asociațiile profesionale.</li>
+            <li>• Recomandările GRS au fost modificate după organizarea celui de-al doilea workshop, în 13-15 martie 2007, la Sydney Australia, unde au fost încorporate în ghiduri noutățile care au apărut în ultimii 10 ani.</li>
+        </ul>
+        <p><strong>2. Scopul tratamentului cu hormon de creștere la adult</strong></p>
+        <ul>
+            <li>• La adulții cunoscuți cu DGH din copilărie și care au atins înălțimea finală:</li>
+            <ul>
+                <li>→ Scopul tratamentului după oprirea creșterii liniare este acela de a dobândi dezvoltarea somatică completă incluzând acumularea de masă osoasă și masă musculară</li>
+                <li>→ Terapia de substituție cu GH este bine să fie continuată la toți adulții tineri cu DGHA persistent după atingerea înălțimii finale</li>
+                <li>→ Adolescenții cu DGH care refuză tratamentul trebuie să fie atent monitorizați. Evidența unor anomalii ale compoziției corporale trebuie să fie un indicator puternic pentru reînceperea tratamentului cu GH, după o nouă discuție cu pacientul.</li>
+            </ul>
+            <li>• La pacienții cu DGHA dobândit în viața adultă, scopul tratamentului este de a:</li>
+            <ul>
+                <li>→ Îmbunătăți compoziția corporală</li>
+                <li>→ Prezerva masa scheletală</li>
+                <li>→ Normaliza factorii de risc cardiovascular</li>
+                <li>→ Menține statusul IGF-1</li>
+                <li>→ Menține un nivel optim de funcționare fizică și psihologică</li>
+            </ul>
+        </ul>
+        <p><strong>3. Criterii de includere în tratamentul cu hormon de creștere la adult (DGHA)</strong></p>
+        <p><strong>3.1. Categorii de pacienți eligibili pentru tratamentul cu rhGH - care necesită testarea prealabilă pentru DGHA)</strong></p>
+        <ul>
+            <li>• Adulții cu DGH cu debut în copilărie care nu au beneficiat de inițierea tratamentului substitutiv la începutul perioadei de tranziție;</li>
+            <li>• Pacienții cu semne și simptome de boală hipotalamo-hipofizară</li>
+            <li>• Pacienții care au fost supuși radioterapiei craniene, terapiei chirurgicale sau antitumorale:</li>
+            <ul>
+                <li>→ Terapia cu somatropinum se va iniția după minim 1 an de la momentul stabilirii statusului de vindecare/remisie/stationar (în funcție de diagnosticul etiologic și de tipul terapiei aplicate) și obligatoriu cu avizul scris al oncologului.</li>
+            </ul>
+            <li>• Pacienții care au suferit leziuni cerebrale traumatice (LCT) sau hemoragie subarahnoidiană la care testarea pentru DGHA trebuie luată în calcul nu mai devreme de 12 luni de la producerea traumatismului.</li>
+        </ul>
+        <p><strong>3.2. Testele diagnostice pentru DGHA</strong></p>
+        <ul>
+            <li>• IGF-1 +/- IGF BP3</li>
+            <li>• Testul de toleranță la insulină (TTI)</li>
+            <li>• Testul la glucagon</li>
+            <li>• Testul la GHRH și arginină hidroclorid</li>
+            <li>• Testul GHRH+growth hormone-releasing peptide (GHRP)</li>
+            <li>• Testul la macimorelin</li>
+        </ul>
+        <p><strong>3.3. Ierarhizarea centrelor în care se poate efectua testarea:</strong></p>
+        <ul>
+            <li>• Screening-ul DGHA prin măsurarea IGF1 bazal poate fi făcută de orice medic specialist endocrinolog</li>
+            <li>• Evaluarea completă pe baza protocolului prezent și completarea recomandărilor de tratament se va face doar în centrele universitare agreate, și anume în clinicile de endocrinologie din București, Cluj Napoca, Iași, Timișoara, Tg Mureș, Sibiu, Craiova și Constanța</li>
+        </ul>
+        <p><strong>3.4. Efectuarea testelor dinamice</strong></p>
+        <p>Este suficient un singur test de stimulare pentru diagnosticul de DGHA:</p>
+        <ul>
+            <li>• TTI – testul recomandat</li>
+            <li>• Glucagon – alternativă potrivită pentru cazurile când TTI este contraindicat sau când GHRH sau GHRP nu sunt disponibile</li>
+            <li>• GHRH+arginină hidroclorid – evaluează capacitatea secretorie maximală</li>
+            <li>• GHRH+growth hormone-releasing peptide (GHRP) - evaluează capacitatea secretorie maximală</li>
+            <li>• Macimorelin - agonist sintetic al receptorului GH-relinei, cu administrare orală, aprobat de EMA pentru testarea rezervei de GH la adulți</li>
+        </ul>
+        <p><strong>3.5. Nu se efectuează testele de stimulare</strong></p>
+        <ul>
+            <li>• Pentru pacienții care au 3 sau mai mult de 3 deficiențe ale hormonilor hipofizari deja în tratament de substituție și o concentrație serică a IGF-1 sub limita inferioară a normalului pentru vârstă și sex au probabilitate > de 97% de a avea DGHA</li>
+            <li>• Pacienții adulți tineri cu DGH cu debut în copilărie tratați cu rhGH pentru promovarea creșterii și ulterior cu terapie rhGH de substituție introdusă în perioada de tranziție timpurie continuă tratamentul fără retestare</li>
+        </ul>
+        <p><strong>3.6. Valorile prag la testele de stimulare (cutoff)</strong></p>
+        <ul>
+            <li>• Pentru TTI și testul cu glucagon, valoarea prag (cutoff) pentru GH este < de 3 μg/l</li>
+            <li>• Pentru GHRH+arginina hidroclorid:</li>
+            <ul>
+                <li>→ GH bazal < de 3 μg/l și GH maxim < 5 μg/l</li>
+            </ul>
+            <li>• GHRH+GHRP:</li>
+            <ul>
+                <li>→ GH maxim < 7.5 μg/l</li>
+            </ul>
+            <li>• Testul cu macimorelin:</li>
+            <ul>
+                <li>→ GH maxim < 3 μg/l</li>
+            </ul>
+        </ul>
+        <table class="genetic-table">
+            <thead>
+                <tr>
+                    <th>Etapa tratamentului</th>
+                    <th>Evaluare</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Inaintea începerii tratamentului</td>
+                    <td>
+                        <ul>
+                            <li>• Informarea pacienților despre tratamentul GH, inclusiv beneficiile și riscurile tratamentului și importanța unei monitorizări atente</li>
+                            <li>• Evaluarea nivelurilor de IGF-I și GH</li>
+                            <li>• Evaluare nutrițională, sfaturi nutriționale și compoziție corporală (dacă este posibil prin DEXA)</li>
+                            <li>• Evaluare clinică completă, inclusiv studiul somnului și respirației. Dacă sforăiți sau există amigdale și vegetație mărite, solicitați o evaluare ORL</li>
+                            <li>• Polisomnografie obligatorie dacă nu s-a făcut cu cel puțin 1 an în urmă</li>
+                            <li>• Test oral de toleranță la glucoză (OGTT), glicemia a jeun și HbA1c</li>
+                            <li>• Evaluarea hipotiroidismului (TSH, T4 liber, T3 liber) și inițierea tratamentului hormonal substitutiv în caz de nevoie</li>
+                            <li>• Evaluarea hipogonadismului</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Sub tratament</td>
+                    <td>
+                        <ul>
+                            <li>• Evaluare clinică regulată: greutate, IMC</li>
+                            <li>• Evaluarea compoziției corporale: DEXA cel puțin o dată la fiecare 3 ani</li>
+                            <li>• IGF-I și efecte secundare la fiecare 6 luni</li>
+                            <li>• TTGO dacă obezitate și antecedente de diabet familial ATCD la fiecare 5 până la 10 ani</li>
+                            <li>• Glicemie la repaus alimentar, HbA1c la 6 luni și apoi anual</li>
+                            <li>• Polisomnografia trebuie verificată de o dată sub tratament și apoi ulterior dacă există semne clinice</li>
+                            <li>• Monitorizarea bilanțului tiroidian la 6 luni în cazul suplimentării dozelor și după fiecare ajustare a dozei de GH</li>
+                            <li>• Evaluarea 25OH-D3 la fiecare 3 ani</li>
+                            <li>• Testosteron sau steroizi</li>
+                            <li>• Inhibină la fete la fiecare 3-5 ani (marker al fertilității)</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Oprirea tratamentului</td>
+                    <td>
+                        <ul>
+                            <li>• Agravarea necontrolată a obezității după 6 luni de tratament</li>
+                            <li>• Degradarea continuă a controlului glicemic în ciuda controlului greutății, tratamentului diabetului și nivelurilor normale de IGF-1</li>
+                            <li>• Deteriorarea continuă a tulburărilor respiratorii și/sau de somn, în ciuda controlului greutății și nivelurilor normale de IGF-1</li>
+                            <li>• Tulburări de comportament severe care nu permit tratamentul optim</li>
+                            <li>• Când situația se îmbunătățește, tratamentul poate fi reluat.</li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+    </div>
+    
+    
+
+    <section class="game-section">
+        <h2 class="line-title">Trending Medical Topics</h2>
+        <div class="owl-carousel custom-carousel owl-theme">
+            <div class="item active"
+                style="background-image: url(https://cdn.prod.website-files.com/650c1bee516c4e723b11b29a/65206264927e177f8bd65950_651f6a5b0bcc2eb5956182ea_Top%252050%2520Healthcare%2520Companies%2520and%2520Their%2520Impact%2520on%2520the%2520Industry.webp);">
+                <div class="item-desc" data-url="{% url 'Test' %}">
+                    <h3>Prader-Wili</h3>
+                    <p>Prader-Willi (PRAH-dur VIL-e) syndrome is a rare genetic disorder that results in a number of
+                        physical, mental, and behavioral problems.</p>
+                </div>
+            </div>
+            <div class="item"
+                style="background-image: url(https://media.licdn.com/dms/image/v2/D4D12AQF-UNBK1Cd76A/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1692008950713?e=2147483647&v=beta&t=np9IYeph2hO3qky7DCqB0sM5KvXP3HWTBT5bknBBlnY);">
+                <div class="item-desc" data-url="{% url 'Test' %}">
+                    <h3>Telemedicine</h3>
+                    <p>Telemedicine involves the use of telecommunication technology to provide healthcare services
+                        remotely, improving access to medical care.</p>
+                </div>
+            </div>
+            <div class="item"
+                style="background-image: url(https://cdn.shopify.com/s/files/1/0817/7988/4088/articles/2ZQTdBKFxvkLYhrtyeWOdg_8fa4b085-dafa-4196-9a61-36db54e3c457.jpg?v=1712945641);">
+                <div class="item-desc" data-url="{% url 'Test' %}">
+                    <h3>Vaccination</h3>
+                    <p>Vaccination is a crucial public health tool that helps prevent the spread of infectious diseases
+                        by inducing immunity in individuals.</p>
+                </div>
+            </div>
+            <div class="item"
+                style="background-image: url(https://www.healthcareitnews.com/sites/hitn/files/Global%20healthcare_2.jpg);">
+                <div class="item-desc" data-url="{% url 'Test' %}">
+                    <h3>Mental Health</h3>
+                    <p>Mental health encompasses emotional, psychological, and social well-being, affecting how we
+                        think, feel, and act.</p>
+                </div>
+            </div>
+            <div class="item"
+                style="background-image: url(https://images.everydayhealth.com/images/healthy-living/about-us-hero-alt.jpg?sfvrsn=68592040_1);">
+                <div class="item-desc" data-url="{% url 'Test' %}">
+                    <h3>Nutrition</h3>
+                    <p>Nutrition involves the intake of food necessary for health and growth, playing a vital role in
+                        maintaining overall well-being.</p>
+                </div>
+            </div>
+            <div class="item" style="background-image: url(https://www.watford.gov.uk/images/health1.jpg);">
+                <div class="item-desc" data-url="{% url 'Test' %}">
+                    <h3>Genomics</h3>
+                    <p>Genomics is the study of genomes, the complete set of DNA within an organism, and its
+                        applications in medicine and biology.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container2">
+            <p>&copy; Protocol terapeutic conform ordin MS/CNAS NR 702/133/2022 - H006E – DCI SOMATROPINUM LA COPII, ÎN PERIOADA DE TRANZIŢIE ȘI LA ADULȚI CU DEFICIT AL HORMONULUI DE CREȘTERE
+
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        $(document).ready(function () {
+            $('.item-desc').on('click', function () {
+                // Get the URL from the data attribute
+                const url = $(this).data('url');
+                // Navigate to the URL
+                window.location.href = url;
+            });
+        });
+    </script>
+
+<!--buton din cardul cu informatii-->
+    <script>
+        document.querySelectorAll('.details-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                alert('More details will be shown here.');
+            });
+        });
+    </script>
+
+
+    <!-- Initialize Owl Carousel -->
+    <script>
+        $(".custom-carousel").owlCarousel({
+            autoWidth: true,
+            loop: false
+        });
+        $(document).ready(function () {
+            $(".custom-carousel .item").click(function () {
+                $(".custom-carousel .item").not($(this)).removeClass("active");
+                $(this).toggleClass("active");
+            });
+        });
+
+        $(document).ready(function () {
+            $(".owl-carousel").owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 3
+                    }
+                }
+            });
+        });
+
+
+    </script>
+
+
+
+</body>
+{%endblock%}
+
+</html>

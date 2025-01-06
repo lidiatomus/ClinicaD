@@ -1,0 +1,231 @@
+{% extends 'login/navbar.html'%}
+    
+{% load static %}
+<!--Website: wwww.codingdung.com-->
+<!DOCTYPE html>
+
+<html lang="en">
+  
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'login/css/style_dash.css' %}">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<style>
+    .headss {
+       padding-top: 10%;
+    }
+   @media (max-width: 600px) {
+    .headss {
+         padding-top: 30%;
+    }
+}
+</style>
+<body style="background: linear-gradient(135deg, #cbcbcb, #ffefef); margin-top: 10%; margin-bottom: 10%;">
+    <div class="container light-style flex-grow-1 container-p-y">
+        <h4 class="headss" >
+            Account settings
+        </h4>
+        {% if message %}
+        <div>{{ message }}</div>
+        {% endif %} 
+        <form action="{% url 'login:dash' %}" method="post">
+            {% csrf_token %}
+            <div class="card overflow-hidden">
+                <div class="row no-gutters row-bordered row-border-light">
+                    <div class="col-md-3 pt-0">
+                        <div class="list-group list-group-flush account-settings-links">
+                            <a class="list-group-item list-group-item-action active" data-toggle="list"
+                                href="#account-general">General</a>
+                            <a class="list-group-item list-group-item-action" data-toggle="list"
+                                href="#account-change-password">Change password</a>
+                            <a class="list-group-item list-group-item-action" data-toggle="list"
+                                href="#account-info">Info</a>
+                            <a class="list-group-item list-group-item-action" data-toggle="list"
+                                href="#account-notifications">Notifications</a>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="tab-content">
+                            <div class="tab-pane fade active show" id="account-general">
+                                <hr class="border-light m-0">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label class="form-label">Username</label>
+                                        <input type="text" class="form-control mb-1" name="username" value="{{request.user.username}}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">First_name</label>
+                                        <input type="text" class="form-control" name="first_name" value="{{request.user.first_name}}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Last_name</label>
+                                        <input type="text" class="form-control" name="last_name" value="{{request.user.last_name}}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">E-mail</label>
+                                        <input type="text" class="form-control mb-1" name="email" value="{{request.user.email}}">
+                                        {% if email_verified == False %}
+                                            <div class="alert alert-warning mt-3">
+                                                Your email is not confirmed. Please check your inbox.<br>
+                                                <button type="submit" name="email_resend" value="email_resend">Resend confirmation</button>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                    <!--=============== Codul pt pacienti/doctor ===============-->
+                                    
+                                    {% if user_type == "patient" %}
+                                        <label>
+                                            <input class="input" type="text" placeholder="{{code}}" name="code">
+                                            <span>Assignment Code</span>
+                                        </label> 
+                                        
+                                            Your doctor with the same code: {{doctor}}
+                                    {% else %}
+                                        <div class="form-group">
+                                            <label class="form-label">Code</label>
+                                            <input type="text" class="form-control" value="{{code}}">
+                                        </div>
+                                    {% endif %}
+                                    
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="account-change-password">
+                                <div class="card-body pb-2">
+                                    <div class="form-group">
+                                        <label class="form-label">New password</label>
+                                        <input type="password" class="form-control" name="password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Repeat new password</label>
+                                        <input type="password" class="form-control" name="password_confirm">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="account-info">
+                                <div class="card-body pb-2">
+                                    <div class="form-group">
+                                        <label class="form-label">Bio</label>
+                                        <textarea class="form-control"
+                                            rows="5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc arcu, dignissim sit amet sollicitudin iaculis, vehicula id urna. Sed luctus urna nunc. Donec fermentum, magna sit amet rutrum pretium, turpis dolor molestie diam, ut lacinia diam risus eleifend sapien. Curabitur ac nibh nulla. Maecenas nec augue placerat, viverra tellus non, pulvinar risus.</textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Birthday</label>
+                                        <input type="text" class="form-control" value="May 3, 1995">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Country</label>
+                                        <select class="custom-select">
+                                            <option>USA</option>
+                                            <option selected>Canada</option>
+                                            <option>UK</option>
+                                            <option>Germany</option>
+                                            <option>France</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <hr class="border-light m-0">
+                                <div class="card-body pb-2">
+                                    <h6 class="mb-4">Contacts</h6>
+                                    <div class="form-group">
+                                        <label class="form-label">Phone</label>
+                                        <input type="text" class="form-control" value="+0 (123) 456 7891">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Website</label>
+                                        <input type="text" class="form-control" value>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="account-notifications">
+                                <div class="card-body pb-2">
+                                    <h6 class="mb-4">Activity</h6>
+                                    <div class="form-group">
+                                        <label class="switcher">
+                                            <input type="checkbox" class="switcher-input" checked>
+                                            <span class="switcher-indicator">
+                                                <span class="switcher-yes"></span>
+                                                <span class="switcher-no"></span>
+                                            </span>
+                                            <span class="switcher-label">Email me when someone comments on my article</span>
+                                        </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="switcher">
+                                            <input type="checkbox" class="switcher-input" checked>
+                                            <span class="switcher-indicator">
+                                                <span class="switcher-yes"></span>
+                                                <span class="switcher-no"></span>
+                                            </span>
+                                            <span class="switcher-label">Email me when someone answers on my forum
+                                                thread</span>
+                                        </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="switcher">
+                                            <input type="checkbox" class="switcher-input">
+                                            <span class="switcher-indicator">
+                                                <span class="switcher-yes"></span>
+                                                <span class="switcher-no"></span>
+                                            </span>
+                                            <span class="switcher-label">Email me when someone follows me</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <hr class="border-light m-0">
+                                <div class="card-body pb-2">
+                                    <h6 class="mb-4">Application</h6>
+                                    <div class="form-group">
+                                        <label class="switcher">
+                                            <input type="checkbox" class="switcher-input" checked>
+                                            <span class="switcher-indicator">
+                                                <span class="switcher-yes"></span>
+                                                <span class="switcher-no"></span>
+                                            </span>
+                                            <span class="switcher-label">News and announcements</span>
+                                        </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="switcher">
+                                            <input type="checkbox" class="switcher-input">
+                                            <span class="switcher-indicator">
+                                                <span class="switcher-yes"></span>
+                                                <span class="switcher-no"></span>
+                                            </span>
+                                            <span class="switcher-label">Weekly product updates</span>
+                                        </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="switcher">
+                                            <input type="checkbox" class="switcher-input" checked>
+                                            <span class="switcher-indicator">
+                                                <span class="switcher-yes"></span>
+                                                <span class="switcher-no"></span>
+                                            </span>
+                                            <span class="switcher-label">Weekly blog digest</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-right mt-3">
+                <button type="submit" class="btn btn-primary" name="Change" value="Change">Save changes</button>&nbsp;
+                <button type="button" class="btn btn-default">Cancel</button>
+            </div>
+        </div>
+    </form>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+
+    </script>
+</body>
+
+</html>
+{% endblock %}

@@ -1,0 +1,533 @@
+{% extends 'index/navbar.html'%}
+{% load static %}
+{% load custom_filters %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+{%block content%}
+
+<head>
+
+    <title>Prader-Wili</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="apple-touch-icon" type="image/png"
+        href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png">
+    <link rel="shortcut icon" type="image/x-icon"
+        href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
+    <link rel="mask-icon" type="image/x-icon"
+        href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg"
+        color="#111">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="stylesheet" href="{% static 'index/style.css' %}">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!--Bootstrap CSS-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+        integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+        integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+        crossorigin="anonymous" />
+
+    <style>
+        .item {
+            transition: transform 0.3s ease;
+            /* Smooth transition for scaling */
+            cursor: pointer;
+            /* Indicate that the item is clickable */
+        }
+
+        .item:hover {
+            transform: scale(1.05);
+            /* Scale the card on hover */
+        }
+
+        .item-desc {
+            position: relative;
+            z-index: 1;
+            /* Ensure text appears above the background */
+            padding: 10px;
+            /* Add some padding */
+            color: white;
+            /* Adjust text color for visibility */
+        }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 1.2rem;
+            }
+
+            th,
+            td {
+                padding: 8px;
+            }
+        }
+
+        /* Media query for extra-small devices (small phones) */
+        @media (max-width: 480px) {
+            body {
+                font-size: 1rem;
+            }
+
+            th,
+            td {
+                padding: 6px;
+            }
+        }
+        /* Card container styling */
+        .card-container {
+            padding: 5%;
+            background: rgba(236, 236, 236, 0.67);
+            border-radius: 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+        }
+
+        /* Heading and list styling */
+        .card-container h1 {
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        .card-container ul {
+            font-size: 1.5rem;
+            padding-left: 20px;
+            list-style: none;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .card-container h1 {
+                font-size: 1.5rem;
+            }
+
+            .card-container ul {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card-container h1 {
+                font-size: 1.2rem;
+            }
+
+            .card-container ul {
+                font-size: 1rem;
+            }
+        }
+
+        .table_container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: rgba(236, 236, 236, 0.67);
+        }
+
+        .title {
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        .clinical-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .header {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+            background-color: #efefef;
+        }
+
+        .cell {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+        .footer {
+        background-color: #0c926e;
+        padding: 10px;
+        text-align: center;
+        font-size: 12px;
+        line-height: 1.5;
+    }
+    
+    .container2 p {
+        margin: 0;
+        padding: 0;
+        word-wrap: break-word; /* Ensures the text breaks to the next line */
+        max-width: 100%; /* Ensures it doesn't overflow */
+    }
+    </style>
+
+
+</head>
+
+
+<body>
+
+    <!-- Script section -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        AOS.init();
+    </script>
+    <script src="{% static 'index/scripts.js' %}"></script>
+    <!--Bootsrap scripts-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+        integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+        crossorigin="anonymous"></script>
+
+    <div class="photo-section" id="home">
+        <img class="photo_art" src="{% static 'index/Resources/health.jpg' %}" alt="Descriptive Alt Text">
+        <div class="photo-overlay">
+            <p>Comportament</p>
+            <p> {% with path=request.get_full_path|split:"/" %}
+                {{ path.2 }} <!-- pt partea a 2-a din link gen ghiduri patoligii etc -->
+                <!-- {{ path.1 }} asta e pt prima parte din link gen prader-wili obezitati rare etc -->
+                {% endwith %}
+            </p>
+        </div>
+    </div>
+
+
+
+    <!-- INCEPUT SITE-->
+    <div class="container" style="padding: 20px;">
+        <div class="row justify-content-center">
+            <div class="col-12 g-0">
+                <div class="card-container">
+                    <div class="card-body">
+                        <h1 class="text-center">Comportament</h1>
+                        <ul>
+                            <li>• Interfera cel mai mult cu calitatea vieții, în particular cu abilitatea de viață independentă.</li>
+                            <li>• Comportament obsesiv-compulsiv.</li>
+                            <li>• Anxietate.</li>
+                            <li>• Intoleranță la frustrare.</li>
+                            <li>• Impulsivitate.</li>
+                            <li>• Rezistență la schimbări.</li>
+                            <li>• Cognitie socială deficitară
+                                <ul>
+                                    <li>o Frecvent în copilăria timpurie, adolescență.</li>
+                                    <li>o Mai puțin la vârsta de adult.</li>
+                                </ul>
+                            </li>
+                            <li>• Trasături sugestive pentru tulburarea din spectrul autist
+                                <ul>
+                                    <li>o Doar o parte din pacienți (1/4) îndeplinesc criterii pentru TSA (frecvent cu disomie uniparentală).</li>
+                                </ul>
+                            </li>
+                            <li>• Sindrom hiperkinetic.</li>
+                            <li>• Psihoză (mai frecvent în disomia uniparentală).</li>
+                            <li>• Creșterea pragului la durere
+                                <ul>
+                                    <li>o Percepția durerii este scăzută și poate masca prezența anumitor afecțiuni uneori severe (infecție, fracturi, etc.).</li>
+                                    <li>o Localizare cu dificultate a sediului durerii.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Second Card (Lighter Gray) -->
+            <div class="col-12 g-0" style="margin-top: 20px;">
+                <div class="card-container">
+                    <div class="card-body">
+                        <h1 class="text-center">Epilepsia</h1>
+                        <ul>
+                            <li> Nu este frecventa, este deseori responsiva la tratament si de obicei se atenueaza si dispar pana la adolescenta. Se prezinta sub forma de convulsii generalizate, cu debut din copilarie.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Third Card (Original Gray) -->
+            <div class="col-12 g-0" style="margin-top: 20px;">
+                <div class="card-container">
+                    <div class="card-body">
+                        <h1 class="text-center">Trasaturi dismorfice</h1>
+                        <ul>
+                            <li>• Diametru bifrontal îngust.</li>
+                            <li>• Fante palpebrale cu formă migdalată.</li>
+                            <li>• Piramida nazală îngustă.</li>
+                            <li>• Buza superioară subțire cu comisuri bucale orientate în jos.</li>
+                            <li>• Unele trăsături sunt observate de la naștere.</li>
+                            <li>• Sub tratament cu hormon de creștere, sindromul dismorfic poate fi atenuat.</li>
+                        </ul>
+                        
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Fourth Card (Lighter Gray) -->
+            <div class="col-12 g-0" style="margin-top: 20px;">
+                <div class="card-container">
+                    <div class="card-body">
+                        <h1 class="text-center">Dermatologic</h1>
+                        <ul>
+                            <li>• Hipopigmentarea părului, ochilor, pielii (în general, în cazul deleției – gena responsabilă este OCA2).</li>
+                            <li>• „Piscături” ale pielii/mucoaselor:
+                                <ul>
+                                    <li>Leziuni tegumentare cronice – modificări ale pigmentării, cruste tegumentare, infectate.</li>
+                                </ul>
+                            </li>
+                            <li>• Edeme periferice, modificări cronice la nivelul membrelor.</li>
+                        </ul>
+                        
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Fifth Card (Original Gray) -->
+            <div class="col-12 g-0" style="margin-top: 20px;">
+                <div class="card-container">
+                    <div class="card-body">
+                        <h1 class="text-center">Oftalmologic</h1>
+                        <ul>
+                            <li>Strabismul, cel mai frecvent este diagnosticat pana la varsta de 5 ani.</li>
+                            <li>De asemenea se observa si miopia si hipermetropia.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Sixth Card (Lighter Gray) -->
+            <div class="col-12 g-0" style="margin-top: 20px;">
+                <div class="card-container">
+                    <div class="card-body">
+                        <h1 class="text-center">Tulburari ale somnului</h1>
+                        <ul>
+                            <li>• Modificarea arhitecturii somnului (prin disfuncție hipotalamică):
+                                <ul>
+                                    <li>Latență redusă a mișcărilor rapide ale ochilor (faza REM).</li>
+                                </ul>
+                            </li>
+                            <li>• Apnee centrală și obstructivă (prin disfuncție hipotalamică).</li>
+                            <li>• Somnolență diurnă excesivă.</li>
+                            <li>• Narcolepsia (10-35% din pacienți).</li>
+                        </ul>
+                        
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Seventh Card (Original Gray) -->
+            <div class="col-12 g-0" style="margin-top: 20px;">
+                <div class="card-container">
+                    <div class="card-body">
+                        <h1 class="text-center">Modificari scheletale </h1>
+                        <ul>
+                            <li>• Scolioza (40-80% din pacienți):
+                                <ul>
+                                    <li>Cu vârsta de debut și severitate variabile – uneori la sugar (corelată cu hipotonia).</li>
+                                </ul>
+                            </li>
+                            <li>• Cifoza:
+                                <ul>
+                                    <li>De obicei la adolescenți și adulți.</li>
+                                </ul>
+                            </li>
+                            <li>• Displazia de șold (20-30% din pacienți).</li>
+                            <li>• Osteopenia și osteoporoza:
+                                <ul>
+                                    <li>Frecvent fracturi osoase.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Eighth Card (Lighter Gray) -->
+            <div class="col-12 g-0" style="margin-top: 20px;">
+                <div class="card-container">
+                    <div class="card-body">
+                        <h1 class="text-center">Modificari dentare</h1>
+                        <ul>
+                            <li>• Volum salivar scăzut.</li>
+                            <li>• Carii dentare frecvente.</li>
+                            <li>• Dificultăți de articulare a cuvintelor.</li>
+                            <li>• Depuneri solidificate ale secrețiilor bucale la nivelul buzelor.</li>
+                            <li>• Hipoplazia smalțului dentar.</li>
+                            <li>• Anomalii de implantare dentară.</li>
+                        </ul>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 g-0" style="margin-top: 20px;">
+                <div class="card-container">
+                    <div class="card-body">
+                        <h1 class="text-center">Supravietuire</h1>
+                        <ul>
+                            <li>• Rata mortalității este mai crescută comparativ cu populația generală.</li>
+                            <li>• Cauze la copil: insuficiență respiratorie, bolile febrile.</li>
+                            <li>• Cauze la adulți:
+                                <ul>
+                                    <li> Afectarea cardiacă și insuficiența cardiacă.</li>
+                                    <li> Tromboembolismul pulmonar.</li>
+                                    <li> Complicații ale obezității.</li>
+                                    <li> Gastropatia (distensia gastricǎ acută cu ruptură gastrică și necroză).</li>
+                                    <li> Aspirarea de corp străin (afectarea deglutiției și lipsa curățării reziduurilor orale).</li>
+                                </ul>
+                            </li>
+                            <li>• Managementul adecvat a condus la scăderea ratei mortalității cu 1.25% pe an.</li>
+                        </ul>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 g-0" style="margin-top: 20px;">
+                <div class="card-container">
+                    <div class="card-body">
+                        <h1 class="text-center">Modificari neuroimagistice</h1>
+                        <ul>
+                            <li>• Modificări ale substanței albe.</li>
+                            <li>• Ventriculomegalie.</li>
+                            <li>• Scăderea volumului cerebral parietal și occipital.</li>
+                            <li>• Polimicrogiria fisurii Sylviene.</li>
+                            <li>• Modificări ale substanței cenușii.</li>
+                            <li>• Hipoplazie hipofizară.</li>
+                        </ul>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <section class="game-section">
+        <h2 class="line-title">Trending Medical Topics</h2>
+        <div class="owl-carousel custom-carousel owl-theme">
+            <div class="item active"
+                style="background-image: url(https://cdn.prod.website-files.com/650c1bee516c4e723b11b29a/65206264927e177f8bd65950_651f6a5b0bcc2eb5956182ea_Top%252050%2520Healthcare%2520Companies%2520and%2520Their%2520Impact%2520on%2520the%2520Industry.webp);">
+                <div class="item-desc" data-url="{% url 'Test' %}">
+                    <h3>Prader-Wili</h3>
+                    <p>Prader-Willi (PRAH-dur VIL-e) syndrome is a rare genetic disorder that results in a number of
+                        physical, mental, and behavioral problems.</p>
+                </div>
+            </div>
+            <div class="item"
+                style="background-image: url(https://media.licdn.com/dms/image/v2/D4D12AQF-UNBK1Cd76A/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1692008950713?e=2147483647&v=beta&t=np9IYeph2hO3qky7DCqB0sM5KvXP3HWTBT5bknBBlnY);">
+                <div class="item-desc" data-url="{% url 'Test' %}">
+                    <h3>Telemedicine</h3>
+                    <p>Telemedicine involves the use of telecommunication technology to provide healthcare services
+                        remotely, improving access to medical care.</p>
+                </div>
+            </div>
+            <div class="item"
+                style="background-image: url(https://cdn.shopify.com/s/files/1/0817/7988/4088/articles/2ZQTdBKFxvkLYhrtyeWOdg_8fa4b085-dafa-4196-9a61-36db54e3c457.jpg?v=1712945641);">
+                <div class="item-desc" data-url="{% url 'Test' %}">
+                    <h3>Vaccination</h3>
+                    <p>Vaccination is a crucial public health tool that helps prevent the spread of infectious diseases
+                        by inducing immunity in individuals.</p>
+                </div>
+            </div>
+            <div class="item"
+                style="background-image: url(https://www.healthcareitnews.com/sites/hitn/files/Global%20healthcare_2.jpg);">
+                <div class="item-desc" data-url="{% url 'Test' %}">
+                    <h3>Mental Health</h3>
+                    <p>Mental health encompasses emotional, psychological, and social well-being, affecting how we
+                        think, feel, and act.</p>
+                </div>
+            </div>
+            <div class="item"
+                style="background-image: url(https://images.everydayhealth.com/images/healthy-living/about-us-hero-alt.jpg?sfvrsn=68592040_1);">
+                <div class="item-desc" data-url="{% url 'Test' %}">
+                    <h3>Nutrition</h3>
+                    <p>Nutrition involves the intake of food necessary for health and growth, playing a vital role in
+                        maintaining overall well-being.</p>
+                </div>
+            </div>
+            <div class="item" style="background-image: url(https://www.watford.gov.uk/images/health1.jpg);">
+                <div class="item-desc" data-url="{% url 'Test' %}">
+                    <h3>Genomics</h3>
+                    <p>Genomics is the study of genomes, the complete set of DNA within an organism, and its
+                        applications in medicine and biology.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <footer class="footer">
+        <div class="container2">
+            <p>&copy; Driscoll DJ, Miller JL, Cassidy SB. Prader-Willi Syndrome. 1998 Oct 6 [Updated 2024 Dec 5]. In: Adam MP, Feldman J, Mirzaa GM, et al., editors. GeneReviews® [Internet]. Seattle (WA): University of Washington, Seattle; 1993-2024. Available from: https://www.ncbi.nlm.nih.gov/books/NBK1330/
+                Protocole National de Diagnostic et de Soins (PNDS) Syndrome de Prader-Willi. Centre de référence du syndrome de Prader-Willi et autres Obésités Rares avec troubles du comportement alimentaire (PRADORT), 2021
+                .</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTURI -->
+    <script>
+        $(".custom-carousel").owlCarousel({
+            autoWidth: true,
+            loop: false
+        });
+        $(document).ready(function () {
+            $(".custom-carousel .item").click(function () {
+                $(".custom-carousel .item").not($(this)).removeClass("active");
+                $(this).toggleClass("active");
+            });
+        });
+
+        $(document).ready(function () {
+            $(".owl-carousel").owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 3
+                    }
+                }
+            });
+        });
+
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $('.item-desc').on('click', function () {
+                // Get the URL from the data attribute
+                const url = $(this).data('url');
+                // Navigate to the URL
+                window.location.href = url;
+            });
+        });
+    </script>
+
+</body>
+{%endblock%}
+
+</html>
